@@ -37,16 +37,16 @@ return {
 				dim_inactive = false,
 				transparent_mode = false,
 			})
-			--vim.cmd.colorscheme("gruvbox")
+			-- vim.cmd.colorscheme("gruvbox")
 			--vim.o.background = "light"
 		end,
 	},
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
-			--vim.cmd.colorscheme("kanagawa")
-			vim.cmd.colorscheme("kanagawa-wave")
-			--vim.cmd.colorscheme("kanagawa-dragon")
+			-- vim.cmd.colorscheme("kanagawa")
+			-- vim.cmd.colorscheme("kanagawa-wave")
+			vim.cmd.colorscheme("kanagawa-dragon")
 			--vim.cmd.colorscheme("kanagawa-lotus")
 		end,
 	},
