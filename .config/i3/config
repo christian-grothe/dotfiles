@@ -226,4 +226,3 @@ exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper/wallpaper.jpg
 # Please remove the following exec line:
 #######################################################################
 exec i3-config-wizard
-
