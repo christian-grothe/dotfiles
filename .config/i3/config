@@ -214,7 +214,7 @@ client.placeholder      $border     #1a1a1a $text   #000000   #0c0c0c
 client.background       #ffffff
 #gaps inner 8
 
-exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper/wallpaper.jpg
+exec --no-startup-id feh --bg-scale $HOME/.config/i3/wallpaper.jpg
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
