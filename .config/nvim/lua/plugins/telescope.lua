@@ -25,4 +25,10 @@ return {
       require("telescope").load_extension("ui-select")
     end,
   },
+  {
+    "davidgranstrom/telescope-scdoc.nvim",
+    config = function()
+      require("telescope").load_extension("scdoc")
+    end,
+  }
 }
