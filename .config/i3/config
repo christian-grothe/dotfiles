@@ -220,7 +220,7 @@ exec --no-startup-id feh --bg-scale $HOME/.config/i3/wallpaper.jpg
 exec --np-startup-id xinput set-prop 10 308 1 
 
 # transparency
-exec --no-startup-id picom -CGb
+exec_always --no-startup-id picom  -b --config ~/.config/picom.conf 
 
 workspace 1 output HDMI-1
 workspace 2 output HDMI-1
