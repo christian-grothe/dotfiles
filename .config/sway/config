@@ -21,7 +21,7 @@ set $menu "wofi --show run"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg $HOME/.config/i3/wallpaper.jpg fill
+output * bg $HOME/.config/sway/wallpaper.jpg fill
 
 #
 # Example configuration:
