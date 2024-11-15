@@ -1,11 +1,11 @@
 {
-    "margin-left": 10,
-    "margin-right": 10,
+    "margin-left": 30,
+    "margin-right": 30,
     "spacing": 10,
     "layer": "top",
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["battery", "pulseaudio"],
+    "modules-right": ["pulseaudio", "battery"],
     "sway/window": {
         "max-length": 50
     },
@@ -39,5 +39,18 @@
       "format": "{capacity}% {icon}",
       "format-icons": ["", "", "", "", ""],
       "min-length": 10
+    },
+    "network": {
+      "interface": "wlan0",
+      "format": "{ifname}",
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ifname} ",
+      "format-disconnected": "", //An empty format will hide the module.
+      "format-disconnected": "",
+      "tooltip-format": "{ifname}",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+      "tooltip-format-ethernet": "{ifname} ",
+      "tooltip-format-disconnected": "Disconnected",
+      "min-length": 10,
     }
 }

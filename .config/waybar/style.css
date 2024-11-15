@@ -35,14 +35,10 @@
 
 #workspaces button {
   background: transparent;
-  color: black;
   margin: 0px;
   padding: 0px;
 }
 
-#workspaces button.focused {
-  margin: 0px;
-  padding: 0px;
+#workspaces button.active {
   border: 1px solid white;
-  color: black;
 }
