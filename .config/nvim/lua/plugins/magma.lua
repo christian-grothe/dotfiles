@@ -1,1 +1,0 @@
-return { 'dccsillag/magma-nvim' }
