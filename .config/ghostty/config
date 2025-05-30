@@ -1,1 +1,6 @@
-window-decoration=false
+window-decoration = false
+theme = "Kanagawa Wave"
+font-feature = -calt
+font-family = "JetBrainsMono Nerd Font"
+resize-overlay = never
+mouse-hide-while-typing
