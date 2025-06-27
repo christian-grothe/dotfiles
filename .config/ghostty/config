@@ -1,5 +1,5 @@
 window-decoration = false
-theme = "Kanagawa Wave"
+theme = "catppuccin-frappe"
 font-feature = -calt
 font-family = "JetBrainsMono Nerd Font"
 resize-overlay = never
