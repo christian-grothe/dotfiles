@@ -1,15 +1,15 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     config = function()
       require("mason").setup()
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "cssls", "lua_ls", "ts_ls", "clangd", "rust_analyzer", "cmake" },
+        ensure_installed = {"lua_ls", "ts_ls", "clangd", "rust_analyzer", "bashls"},
       })
     end,
   },
@@ -20,10 +20,7 @@ return {
 
       lspconfig.lua_ls.setup({})
       lspconfig.ts_ls.setup({})
-      lspconfig.clangd.setup({})
-      lspconfig.cmake.setup({})
       lspconfig.rust_analyzer.setup({})
-      lspconfig.cssls.setup({})
       lspconfig.gopls.setup({})
       lspconfig.html.setup({})
       lspconfig.asm_lsp.setup({})
