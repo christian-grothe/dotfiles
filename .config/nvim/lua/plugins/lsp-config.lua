@@ -9,26 +9,44 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "cssls", "lua_ls", "ts_ls", "clangd", "rust_analyzer", "cmake" },
+        ensure_installed = { "cssls", "lua_ls", "vtsls", "clangd", "rust_analyzer", "cmake", "vue_ls" },
       })
     end,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
+      local vue_language_server_path =
+      '/home/christian/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server'
+      local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
+      local vue_plugin = {
+        name = '@vue/typescript-plugin',
+        location = vue_language_server_path,
+        languages = { 'vue' },
+        configNamespace = 'typescript',
+      }
+      local vtsls_config = {
+        settings = {
+          vtsls = {
+            tsserver = {
+              globalPlugins = {
+                vue_plugin,
+              },
+            },
+          },
+        },
+        filetypes = tsserver_filetypes,
+      }
 
-      -- lspconfig.lua_ls.setup({})
-      -- lspconfig.ts_ls.setup({})
-      -- lspconfig.clangd.setup({})
-      -- lspconfig.cmake.setup({})
-      -- lspconfig.rust_analyzer.setup({})
-      -- lspconfig.cssls.setup({})
-      -- lspconfig.gopls.setup({})
-      -- lspconfig.html.setup({})
-      -- lspconfig.asm_lsp.setup({})
+      -- If you are on most recent `nvim-lspconfig`
+      local vue_ls_config = {}
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      -- nvim 0.11 or above
+      vim.lsp.config('vtsls', vtsls_config)
+      vim.lsp.config('vue_ls', vue_ls_config)
+      vim.lsp.enable({ 'vtsls', 'vue_ls' }) -- If using `ts_ls` replace `vtsls` to `ts_ls`
+
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>en", vim.diagnostic.goto_next, {})
