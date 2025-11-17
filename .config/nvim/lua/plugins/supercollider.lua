@@ -16,7 +16,7 @@ return {
           ['<CR>'] = map('postwin.toggle'),
           ['<M-CR>'] = map('postwin.toggle', 'i'),
           ['<M-L>'] = map('postwin.clear', { 'n', 'i' }),
-          ['<C-k>'] = map('signature.show', { 'n', 'i' }),
+          ['<C-s>'] = map('signature.show', { 'n', 'i' }),
           ['<F12>'] = map('sclang.hard_stop', { 'n', 'x', 'i' }),
           ['<leader>st'] = map('sclang.start'),
           ['<leader>sk'] = map('sclang.recompile'),
