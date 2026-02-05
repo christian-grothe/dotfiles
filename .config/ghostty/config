@@ -1,5 +1,5 @@
 window-decoration = false
-theme = "catppuccin-frappe"
+theme = "catppuccin-mocha"
 font-feature = -calt
 font-family = "JetBrainsMono Nerd Font"
 resize-overlay = never

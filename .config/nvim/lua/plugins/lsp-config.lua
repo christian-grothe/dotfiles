@@ -9,7 +9,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "cssls", "lua_ls", "vtsls", "clangd", "rust_analyzer", "cmake", "vue_ls" },
+				ensure_installed = { "cssls", "lua_ls", "rust_analyzer", "cmake" },
 			})
 		end,
 	},
@@ -18,41 +18,6 @@ return {
 		config = function()
 			local vue_language_server_path =
 				"/home/christian/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server"
-			-- local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
-
-			local vue_plugin = {
-				name = "@vue/typescript-plugin",
-				location = vue_language_server_path,
-				languages = { "vue" },
-				configNamespace = "typescript",
-			}
-
-			local util = require("lspconfig.util")
-
-			local vtsls_config = {
-				root_dir = util.root_pattern("tsconfig.json", "package.json", ".git"),
-				settings = {
-					vtsls = {
-						tsserver = {
-							globalPlugins = {
-								vue_plugin,
-							},
-						},
-					},
-				},
-				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-			}
-
-			vim.opt.wildignore:append({ "*/node_modules/*", "*/dist/*", "*/.git/*" })
-			vim.lsp._watchfiles = false
-
-			-- If you are on most recent `nvim-lspconfig`
-			local vue_ls_config = {}
-
-			-- nvim 0.11 or above
-			vim.lsp.config("vtsls", vtsls_config)
-			vim.lsp.config("vue_ls", vue_ls_config)
-			vim.lsp.enable({ "vtsls", "vue_ls" }) -- If using `ts_ls` replace `vtsls` to `ts_ls`
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
