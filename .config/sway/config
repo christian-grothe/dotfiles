@@ -1,0 +1,151 @@
+# #######################################################################################
+# Sway config — translated from ~/.config/hypr/hyprland.conf
+# Docs: man 5 sway
+# #######################################################################################
+
+include ~/.config/sway/mocha.conf
+
+### Variables (mirrors the $foo programs from hyprland.conf) ###
+set $mod         Mod4
+set $terminal    alacritty
+set $fileManager nautilus
+set $menu        wofi --show drun
+set $browser     chromium-browser
+set $discord     chromium-browser --new-window --app=https://discord.com
+set $chatgpt     chromium-browser --new-window --app=https://chatgpt.com
+set $youtube     chromium-browser --new-window --app=https://youtube.com
+set $github      chromium-browser --new-window --app=https://github.com
+set $thunderbird flatpak run net.thunderbird.Thunderbird
+
+# Hyprland used hyprshot; sway uses grim + slurp. Region shot -> clipboard.
+set $screenshot_region grim -g "$(slurp)" - | wl-copy
+
+### Output / monitors ###
+# hyprland: monitor=eDP-1,preferred,auto,1  (preferred mode, auto position, scale 1)
+output eDP-1 scale 1
+
+# Wallpaper — sway-native (replaces hyprpaper). Reuses the existing wallpaper file.
+output * bg ~/.config/hypr/wallpaper.jpg fill
+
+### Environment / cursor ###
+# hyprland: env XCURSOR_SIZE,24 + setcursor catppuccin-mocha-dark-cursors 28
+seat seat0 xcursor_theme catppuccin-mocha-dark-cursors 28
+# QT_QPA_PLATFORMTHEME=qt5ct must be exported before sway starts
+# (e.g. in ~/.config/environment.d/ or your login shell) — sway has no `env` directive.
+
+### Autostart ###
+# Screensharing setup. Two things must happen for xdg-desktop-portal-wlr to work:
+#  1. Push sway's env into the systemd/D-Bus user session so the D-Bus-activated
+#     portal sees XDG_CURRENT_DESKTOP=sway (-> loads sway-portals.conf, routing
+#     ScreenCast to the wlr backend). Otherwise it inherits a stale GNOME env.
+#  2. Activate sway-session.target, which BindsTo graphical-session.target. The
+#     portal has Requisite=graphical-session.target and won't start until it's active.
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+exec systemctl --user start sway-session.target
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec waybar
+exec swaync
+exec autotiling-rs
+
+### Input (man 5 sway-input) ###
+input type:keyboard {
+    xkb_layout de
+    xkb_options ctrl:nocaps
+}
+input type:touchpad {
+    natural_scroll enabled
+}
+focus_follows_mouse yes
+
+### Appearance ###
+# hyprland: border_size = 1, gaps_in/out = 0
+default_border pixel 1
+gaps inner 0
+gaps outer 0
+# Note: sway has no window rounding or animations (hyprland's `rounding`,
+# `animations`, and the `master` layout require swayfx; default sway tiling is used).
+
+# Borders — col.active_border = $lavender, col.inactive_border = $base
+#                       border    bg        text   indicator child_border
+client.focused          $lavender $lavender $base  $lavender $lavender
+client.focused_inactive $base     $base     $text  $base     $base
+client.unfocused        $base     $base     $text  $base     $base
+client.urgent           $red      $red      $crust $red      $red
+
+### Window rules ###
+# hyprland suppressed maximize events; sway has no equivalent and needs none.
+for_window [app_id="wofi"] floating enable
+
+### Key bindings ###
+# Drag to move (left) / resize (right) with $mod — replaces hyprland bindm.
+floating_modifier $mod normal
+
+# Audio (pactl)
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Brightness (brightnessctl)
+bindsym XF86MonBrightnessUp   exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+# Launchers
+bindsym $mod+b exec $browser
+bindsym $mod+n exec $discord
+bindsym $mod+u exec $youtube
+bindsym $mod+z exec $chatgpt
+bindsym $mod+t exec $thunderbird
+bindsym $mod+g exec $github
+bindsym $mod+r exec $screenshot_region
+bindsym $mod+Return exec $terminal
+bindsym $mod+d exec $menu
+
+# Window / session management
+bindsym $mod+q kill
+bindsym $mod+m exit
+bindsym $mod+v floating toggle
+bindsym $mod+e split toggle
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+d output eDP-1 disable
+bindsym $mod+Shift+f output eDP-1 enable
+
+# Move focus (hyprland h/l/k/j = left/right/up/down)
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+k focus up
+bindsym $mod+j focus down
+
+# Switch workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move active window to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Scratchpad (hyprland special workspace "magic")
+bindsym $mod+s scratchpad show
+bindsym $mod+Shift+s move scratchpad
+
+# Scroll through workspaces with $mod + mouse wheel
+bindsym $mod+button4 workspace prev_on_output
+bindsym $mod+button5 workspace next_on_output
+
+# Status bar — waybar is launched via exec above instead of sway's built-in bar.

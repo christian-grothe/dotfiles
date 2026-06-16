@@ -1,5 +1,7 @@
 * {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
   font-size: 12px;
+  font-weight: bold;
   color: #cdd6f4;
   border: none;
   border-radius: 0;
@@ -35,10 +37,12 @@
 
 #workspaces button {
   background: transparent;
+  color: #cdd6f4;
   margin: 0px;
-  padding: 0px;
+  padding: 0px 8px;
 }
 
-#workspaces button.active {
-  border-top: 1px solid;
+#workspaces button.focused {
+  color: #b4befe;
+  border-top: 1px solid #b4befe;
 }

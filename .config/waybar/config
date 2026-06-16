@@ -1,53 +1,59 @@
 {
-    "margin-left": 0,
-    "margin-right": 0,
-    "spacing": 10,
     "layer": "top",
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "position": "top",
+    "height": 30,
+    "modules-left": ["sway/workspaces", "sway/window"],
     "modules-center": ["clock"],
     "modules-right": ["pulseaudio", "battery"],
-    "clock": {
-        "format": "{:%a, %d. %b  %H:%M}",
-        "tooltip": false,
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
+    
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{icon}",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+        }
+    },
+    
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 50
+    },
+
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M}"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 muted",
+        "format-icons": {
+            "headphone": "󰋋",
+            "default": ["󰕿", "󰖀", "󰕾"]
         },
-        "scroll-step": 1,
         "on-click": "pavucontrol"
     },
+
     "battery": {
-      "bat": "BAT1",
-      "interval": 60,
-      "states": {
-        "warning": 30,
-        "critical": 15
-      },
-      "format": "{capacity}% {icon}",
-      "format-icons": ["", "", "", "", ""],
-      "min-length": 10
-    },
-    "network": {
-      "interface": "wlan0",
-      "format": "{ifname}",
-      "format-wifi": "{essid} ({signalStrength}%) ",
-      "format-ethernet": "{ifname} ",
-      "format-disconnected": "", //An empty format will hide the module.
-      "format-disconnected": "",
-      "tooltip-format": "{ifname}",
-      "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-      "tooltip-format-ethernet": "{ifname} ",
-      "tooltip-format-disconnected": "Disconnected",
-      "min-length": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     }
 }

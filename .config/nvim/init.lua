@@ -46,3 +46,5 @@ require("lazy").setup({
 })
 
 vim.cmd.colorscheme('catppuccin-mocha')
+
+vim.opt.guicursor = "n-v-c:block-blinkon1,i-ci-ve:ver25,r-cr:hor20"
