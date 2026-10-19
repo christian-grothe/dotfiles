@@ -23,7 +23,6 @@ vim.g.mapleader = ' '
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>l", vim.cmd.vsplit)
 vim.keymap.set("n", "<leader>k", vim.cmd.split)
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")

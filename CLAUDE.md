@@ -13,7 +13,7 @@ the relevant program reloads its config.
 
 Most tools must be told to re-read their config; there is no global "apply":
 
-- **Hyprland**: `hyprctl reload` (also bound to `SUPER+SHIFT+R`).
+- **Sway**: `swaymsg reload`.
 - **tmux**: `prefix` then `r` (rebound to `source-file ~/.tmux.conf`).
 - **Neovim**: restart, or `:Lazy sync` after changing plugin specs. `lazy-lock.json` pins
   plugin commits — commit it alongside plugin changes.
@@ -23,7 +23,7 @@ Most tools must be told to re-read their config; there is no global "apply":
 
 Everything is **Catppuccin Mocha**. When adding or restyling a component, match this palette
 rather than introducing new colors. The accent blue used across borders is `#b4befe`.
-Hyprland colors are sourced from `.config/hypr/mocha.conf`.
+The palette lives in `.config/theme/` (`mocha.conf` for sway, `mocha.css` for waybar/wofi via `@import`, `mocha.tmux`). Use those instead of hardcoding hex values.
 
 ## Neovim architecture
 
@@ -35,14 +35,10 @@ Hyprland colors are sourced from `.config/hypr/mocha.conf`.
 - **LSP** (`lsp-config.lua`): servers are installed via mason + mason-lspconfig
   (`ensure_installed`: cssls, lua_ls, rust_analyzer, cmake). Keymaps `K` hover, `gd`
   definition, `<leader>ca` code action, `<leader>e[n/p]` diagnostics.
-- **Formatting / linting** (`none-ls.lua`): none-ls with `prettierd` (format) and
-  `eslint_d` (diagnostics). `<leader>gf` formats via `vim.lsp.buf.format`.
+- **Formatting / linting**: `conform.nvim` (`conform.lua`, prettierd/stylua, `<leader>gf`) and `nvim-lint` (`lint.lua`, eslint_d).
 - **REPLs**: `iron.lua` (general REPLs — sh/zsh, python3) and `supercollider.lua` (scnvim
   for live-coding audio). These define their own send-to-REPL keymaps.
 
 ## Notes
 
-- Multiple terminal emulators are configured (ghostty, kitty, alacritty); **ghostty** is the
-  active one (`$terminal` in `hyprland.conf`). Keep changes consistent if editing several.
-- `.config/ghostty/#config#` is a stray Emacs autosave artifact — do not edit or commit it;
-  it can be deleted.
+- Window manager is **sway**; deployed with GNU Stow. Terminals: alacritty (`$terminal` in sway config) and ghostty.

@@ -3,7 +3,7 @@
 # Docs: man 5 sway
 # #######################################################################################
 
-include ~/.config/sway/mocha.conf
+include ~/.config/theme/mocha.conf
 
 ### Variables (mirrors the $foo programs from hyprland.conf) ###
 set $mod         Mod4
@@ -24,8 +24,8 @@ set $screenshot_region grim -g "$(slurp)" - | wl-copy
 # hyprland: monitor=eDP-1,preferred,auto,1  (preferred mode, auto position, scale 1)
 output eDP-1 scale 1
 
-# Wallpaper — sway-native (replaces hyprpaper). Reuses the existing wallpaper file.
-output * bg ~/.config/hypr/wallpaper.jpg fill
+# Wallpaper — sway-native. Reuses the existing wallpaper file.
+output * bg ~/.config/sway/wallpaper.jpg fill
 
 ### Environment / cursor ###
 # hyprland: env XCURSOR_SIZE,24 + setcursor catppuccin-mocha-dark-cursors 28
