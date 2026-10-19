@@ -1,8 +1,36 @@
+/* Catppuccin Mocha palette — mirrors ~/.config/hypr/mocha.conf / ~/.config/sway/mocha.conf */
+@define-color rosewater #f5e0dc;
+@define-color flamingo  #f2cdcd;
+@define-color pink      #f5c2e7;
+@define-color mauve     #cba6f7;
+@define-color red       #f38ba8;
+@define-color maroon    #eba0ac;
+@define-color peach     #fab387;
+@define-color yellow    #f9e2af;
+@define-color green     #a6e3a1;
+@define-color teal      #94e2d5;
+@define-color sky       #89dceb;
+@define-color sapphire  #74c7ec;
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color text      #cdd6f4;
+@define-color subtext1  #bac2de;
+@define-color subtext0  #a6adc8;
+@define-color overlay2  #9399b2;
+@define-color overlay1  #7f849c;
+@define-color overlay0  #6c7086;
+@define-color surface2  #585b70;
+@define-color surface1  #45475a;
+@define-color surface0  #313244;
+@define-color base      #1e1e2e;
+@define-color mantle    #181825;
+@define-color crust     #11111b;
+
 * {
   font-family: "JetBrainsMono Nerd Font", sans-serif;
   font-size: 12px;
   font-weight: bold;
-  color: #cdd6f4;
+  color: #ffffff;
   border: none;
   border-radius: 0;
   box-shadow: none;
@@ -11,38 +39,39 @@
 }
 
 #waybar {
-  /* background: #1a1a1a; */
-  background: #11111b;
-  /* opacity: 0.85; */
+  background: @base;
+  border-bottom: 1px solid @surface2;
 }
 
+#workspaces,
 #window,
-#memory,
-#disk,
+#clock,
+#network,
 #pulseaudio,
-#custom-weather,
-#cpu {
+#battery {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-#custom-weather {
-  padding-left: 2rem;
-  font-weight: bold;
-}
-
 #workspaces {
   background: transparent;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 #workspaces button {
   background: transparent;
-  color: #cdd6f4;
+  color: #ffffff;
   margin: 0px;
   padding: 0px 8px;
 }
 
 #workspaces button.focused {
-  color: #b4befe;
-  border-top: 1px solid #b4befe;
+  color: #ffffff;
+  border-top: 1px solid #ffffff;
+}
+
+#workspaces button.urgent {
+  color: @red;
+  border-top: 1px solid @red;
 }

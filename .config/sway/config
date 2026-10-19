@@ -60,6 +60,7 @@ focus_follows_mouse yes
 ### Appearance ###
 # hyprland: border_size = 1, gaps_in/out = 0
 default_border pixel 1
+smart_borders on
 gaps inner 0
 gaps outer 0
 # Note: sway has no window rounding or animations (hyprland's `rounding`,

@@ -4,7 +4,7 @@
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "battery"],
+    "modules-right": ["network", "pulseaudio", "battery"],
     
     "sway/workspaces": {
         "disable-scroll": false,
@@ -34,6 +34,16 @@
 
     "clock": {
         "format": "{:%Y-%m-%d %H:%M}"
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰤭 disconnected",
+        "format-linked": "󰤨 {ifname} (no IP)",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)  {ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname}  {ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
     },
 
     "pulseaudio": {
