@@ -40,8 +40,8 @@
 }
 
 #waybar {
-  background: @base;
-  border-bottom: 1px solid @surface2;
+  background: @mantle;
+  /*border-bottom: 1px solid @surface2;*/
 }
 
 #workspaces,

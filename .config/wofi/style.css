@@ -29,7 +29,7 @@
 
 window {
   margin: 0px;
-  border: 1px solid @lavender;
+  border: 2px solid @lavender;
   background-color: @base;
 }
 

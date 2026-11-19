@@ -7,7 +7,7 @@ include ~/.config/theme/mocha.conf
 
 ### Variables (mirrors the $foo programs from hyprland.conf) ###
 set $mod         Mod4
-set $terminal    alacritty
+set $terminal    kitty
 set $fileManager nautilus
 set $menu        wofi --show drun
 set $browser     chromium-browser
@@ -92,7 +92,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 # Launchers
 bindsym $mod+b exec $browser
-bindsym $mod+n exec $discord
+bindsym $mod+n exec $fileManager
 bindsym $mod+u exec $youtube
 bindsym $mod+z exec $chatgpt
 bindsym $mod+t exec $thunderbird
